@@ -27,8 +27,13 @@ nav {
   letter-spacing: 1px;
 }
 .nav-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   gap: 30px;
+  /* border: 1px solid red; */
+
 }
 .nav-links a {
   text-decoration: none;
