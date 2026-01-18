@@ -1,0 +1,278 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0f0f0f 0%, #000305 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 60px;
+  height: 10vh;
+}
+.logo {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: white;
+  letter-spacing: 1px;
+}
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+.btn-contact {
+  padding: 10px 24px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+}
+.btn-contact:hover {
+  border-color: #333;
+}
+
+/* Hero Section */
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 90vh;
+}
+
+/* Typography */
+h1 {
+  color: #e4e4e4;
+  line-height: 1.2;
+  margin-bottom: 60px;
+  z-index: 10;
+}
+.top-line {
+  font-size: 3rem;
+  font-weight: 400;
+  display: block;
+  margin-bottom: 5px;
+}
+.highlight {
+  color: #ea4c89;
+  font-weight: 600;
+}
+.bottom-line {
+  font-size: 4.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+}
+
+/* Image Container */
+.gallery {
+  display: grid;
+  grid-template-columns: 0.6fr 1.4fr 0.6fr 1.4fr 0.6fr;
+  grid-template-rows: repeat(2, 150px);
+  gap: 15px;
+  width: 95%;
+  max-width: 90vw;
+  height: auto;
+  min-height: 300px;
+  margin-bottom: 50px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Specific Grid Layout matching the reference */
+/* Col 1: Tall */
+.card:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  transform: translate(300px, -150px);
+}
+
+/* Col 2: Stacked */
+.card:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+  transform: translate(-50px, -150px);
+}
+
+.card:nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+  transform: translate(150px, -100px);
+}
+
+/* Col 3: Tall */
+.card:nth-child(4) {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  transform: translate(-500px, -50px);
+}
+
+/* Col 4: Stacked */
+.card:nth-child(5) {
+  grid-column: 4;
+  grid-row: 1;
+  transform: translate(50px, -150px);
+}
+
+.card:nth-child(6) {
+  grid-column: 4;
+  grid-row: 2;
+  transform: translate(250px, 10px);
+}
+
+/* Col 5: Tall */
+.card:nth-child(7) {
+  grid-column: 5;
+  grid-row: 1 / span 2;
+  transform: translate(-300px, 50px);
+}
+
+/* Final State - Reset Transform */
+.card.in-order {
+  transform: translate(0, 0) scale(1);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1024px) {
+  /* Allow Scrolling */
+  body {
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .hero {
+    height: auto;
+    padding-top: 40px;
+    padding-bottom: 80px;
+    display: block;
+    /* margin-bottom: 0/; */
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .top-line {
+    font-size: 1.8rem;
+  }
+  .bottom-line {
+    font-size: 2.5rem;
+  }
+
+  nav {
+    padding: 15px 20px;
+    flex-shrink: 0;
+  }
+  .nav-links {
+    display: none;
+  }
+
+  /* Gallery Layout: Rotated Grid (Wide & Split) */
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Auto rows based on content */
+    grid-template-rows: repeat(5, 0.3fr);
+    margin: 0 auto;
+    gap: 15px;
+    height: auto;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+    transform: translateY(30px);
+  }
+
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Card 1: Menjadi Lebar (Full Width) */
+  .card:nth-child(1) {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  /* Card 2 & 3: Berdampingan */
+  .card:nth-child(2) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .card:nth-child(3) {
+    grid-column: 2;
+    grid-row: auto;
+  }
+
+  /* Card 4: Lebar Lagi */
+  .card:nth-child(4) {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  /* Card 5 & 6: Berdampingan */
+  .card:nth-child(5) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .card:nth-child(6) {
+    grid-column: 2;
+    grid-row: auto;
+  }
+
+  /* Card 7: Lebar Terakhir */
+  .card:nth-child(7) {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  /* Final State */
+  .card.in-order {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.test {
+  height: 100vh;
+  /* border: 1px solid red; */
+}
